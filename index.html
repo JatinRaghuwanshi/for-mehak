@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>For Mehak ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff6f91, #ff9671);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      text-align: center;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.18);
+      padding: 28px;
+      border-radius: 22px;
+      width: 90%;
+      max-width: 420px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    }
+
+    h1 {
+      margin-bottom: 5px;
+      font-size: 26px;
+    }
+
+    .date {
+      font-size: 14px;
+      opacity: 0.9;
+      margin-bottom: 12px;
+    }
+
+    .photo {
+      width: 150px;
+      height: 150px;
+      border-radius: 20px;
+      object-fit: cover;
+      border: 3px solid white;
+      margin: 14px auto;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    .heart {
+      font-size: 40px;
+      margin: 10px 0;
+      animation: pulse 1.5s infinite;
+    }
+
+    p {
+      font-size: 18px;
+      min-height: 70px;
+    }
+
+    button {
+      background: white;
+      color: #ff4d6d;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 14px;
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    .countdown {
+      margin-top: 18px;
+      font-size: 16px;
+      background: rgba(0,0,0,0.25);
+      padding: 10px;
+      border-radius: 15px;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.25); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <h1>Mehak ❤️</h1>
+    <div class="date">24 January</div>
+
+    <!-- YOUR PHOTO -->
+    <img src="our-photo.jpg" class="photo" alt="Us ❤️">
+
+    <div class="heart">💖</div>
+
+    <p id="message">
+      Even miles apart… this picture reminds me that we belong together.
+    </p>
+
+    <button onclick="nextMessage()">Tap My Heart 💕</button>
+
+    <div class="countdown" id="countdown">
+      Calculating days… 🥹
+    </div>
+  </div>
+
+  <script>
+    const messages = [
+      "I miss you so much, Mehak 😔",
+      "Every smile of yours lives in my heart 💭",
+      "Distance hurts, but loving you feels right ❤️",
+      "March is coming… and so am I 🥹✨",
+      "I can’t wait to hold you again 🤍",
+      "I love you endlessly, Mehak. Yours — Jatin ❤️"
+    ];
+
+    let index = 0;
+
+    function nextMessage() {
+      const msg = document.getElementById("message");
+      if (index < messages.length) {
+        msg.innerText = messages[index];
+        index++;
+      }
+    }
+
+    function updateCountdown() {
+      const today = new Date();
+      const meetDate = new Date(2026, 2, 13); // March = 2
+
+      today.setHours(0,0,0,0);
+      meetDate.setHours(0,0,0,0);
+
+      const diffTime = meetDate - today;
+      const daysLeft = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+      document.getElementById("countdown").innerText =
+        daysLeft + " days left until I see you ❤️";
+    }
+
+    updateCountdown();
+  </script>
+
+</body>
+</html>
