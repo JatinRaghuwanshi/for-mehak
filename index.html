@@ -46,6 +46,8 @@
       border: 3px solid white;
       margin: 14px auto;
       box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      cursor: pointer;
+      transition: opacity 0.4s ease-in-out;
     }
 
     .heart {
@@ -97,8 +99,8 @@
     <h1>Mehak ❤️</h1>
     <div class="date">24 January</div>
 
-    <!-- YOUR PHOTO -->
-    <img src="our-photo.jpeg" class="photo" alt="Us ❤️">
+    <!-- PHOTO SLIDER -->
+    <img id="slider" src="photo1.jpeg" class="photo" alt="Us ❤️">
 
     <div class="heart">💖</div>
 
@@ -114,6 +116,7 @@
   </div>
 
   <script>
+    /* ❤️ Love Messages */
     const messages = [
       "I miss you so much, Mehak 😔",
       "Every smile of yours lives in my heart 💭",
@@ -133,6 +136,24 @@
       }
     }
 
+    /* 📸 Photo Slider */
+    const photos = ["photo1.jpeg", "photo2.jpeg", "photo3.gif"];
+    let currentPhoto = 0;
+    const slider = document.getElementById("slider");
+
+    function changePhoto() {
+      slider.style.opacity = 0;
+      setTimeout(() => {
+        currentPhoto = (currentPhoto + 1) % photos.length;
+        slider.src = photos[currentPhoto];
+        slider.style.opacity = 1;
+      }, 300);
+    }
+
+    slider.addEventListener("click", changePhoto);
+    setInterval(changePhoto, 3000);
+
+    /* ⏳ Countdown */
     function updateCountdown() {
       const today = new Date();
       const meetDate = new Date(2026, 2, 13); // March = 2
@@ -151,5 +172,4 @@
   </script>
 
 </body>
-
 </html>
