@@ -25,6 +25,7 @@
       width: 90%;
       max-width: 420px;
       box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+      position: relative;
     }
 
     h1 {
@@ -85,6 +86,22 @@
       border-radius: 15px;
     }
 
+    /* 💘 Valentine section */
+    .valentine-box {
+      margin-top: 25px;
+    }
+
+    .btns {
+      position: relative;
+      height: 80px;
+    }
+
+    #noBtn {
+      position: absolute;
+      left: 60%;
+      top: 0;
+    }
+
     @keyframes pulse {
       0% { transform: scale(1); }
       50% { transform: scale(1.25); }
@@ -113,6 +130,16 @@
     <div class="countdown" id="countdown">
       Calculating days… 🥹
     </div>
+
+    <!-- 💌 NEW VALENTINE QUESTION -->
+    <div class="valentine-box">
+      <h2>Will you be my Valentine? 💘</h2>
+      <div class="btns">
+        <button id="yesBtn">Yes ❤️</button>
+        <button id="noBtn">No 🙈</button>
+      </div>
+    </div>
+
   </div>
 
   <script>
@@ -156,7 +183,7 @@
     /* ⏳ Countdown */
     function updateCountdown() {
       const today = new Date();
-      const meetDate = new Date(2026, 2, 13); // March = 2
+      const meetDate = new Date(2026, 2, 13);
 
       today.setHours(0,0,0,0);
       meetDate.setHours(0,0,0,0);
@@ -169,6 +196,26 @@
     }
 
     updateCountdown();
+
+
+    /* 💘 NEW Valentine Logic */
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+
+    yesBtn.addEventListener("click", () => {
+      alert("Yayyy ❤️ You just made me the happiest person alive 🥹💕");
+    });
+
+    function moveNoButton() {
+      const x = Math.random() * 220;
+      const y = Math.random() * 40;
+
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    }
+
+    noBtn.addEventListener("mouseenter", moveNoButton);
+    noBtn.addEventListener("touchstart", moveNoButton);
   </script>
 
 </body>
